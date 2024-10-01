@@ -20,7 +20,6 @@ namespace Canvas {
 
 int main() {
 
-    Button btn_foo(500.0f, 500.0f, 500.0f, 100.0f, "this is my foo button", 30.0f, BLACK, WHITE, WHITE, (Color) {100, 100, 100, 255}, BLUE);
     Button btn_default(900, 900);
 
 
@@ -36,7 +35,6 @@ int main() {
             ClearBackground(Canvas::bg);
 
 
-            btn_foo.update();
             btn_default.update();
 
             if (btn_default.is_pressed())

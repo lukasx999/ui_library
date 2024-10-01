@@ -1,15 +1,16 @@
 #pragma once
 
 #include <iostream>
-
+#include <vector>
 
 #include "raylib.h"
 #include "raymath.h"
 
+using std::string, std::vector;
 
 
 
-using std::string;
+
 
 
 
@@ -88,6 +89,23 @@ protected:
 
 
 };
+
+
+
+
+#if 0
+class Canvas {
+public:
+    vector<Component*> components;
+
+    Canvas();      // configure raylib...
+    ~Canvas();
+    void update(); // raylib main event loop
+
+protected:
+};
+#endif
+
 
 
 
