@@ -18,14 +18,18 @@ using std::string, std::vector;
 class Component {
 public:
 
+    bool  m_is_visible;
     float m_x, m_y; // center
 
     Component(float x, float y);
     virtual ~Component();
 
-    virtual void update() = 0;
+    virtual void update();
 
 protected:
+
+    virtual void update_impl() = 0;
+
 };
 
 
@@ -74,7 +78,6 @@ public:
            Color  hover_color        = DefaultColors::hover,
            Color  pressed_color      = DefaultColors::press);
 
-    virtual void update() override;
     bool is_pressed();
     bool is_released();
 
@@ -82,6 +85,8 @@ protected:
     bool m_was_pressed_;
     Color m_current_bg_color_;
     Color m_current_text_color_;
+
+    virtual void update_impl() override;
 
     void update_color();
     void check_collision(Rectangle rec);
@@ -93,18 +98,30 @@ protected:
 
 
 
-#if 0
 class Canvas {
 public:
-    vector<Component*> components;
+    vector<Component*> m_components;
 
-    Canvas();      // configure raylib...
+    int    m_width    = 1920;
+    int    m_height   = 1080;
+    int    m_fps      = 60;
+    Color  m_bg_color = BLACK;
+    string m_title    = "ui";
+
+    Canvas(int width      = 1920,
+           int height     = 1080,
+           int fps        = 60,
+           Color bg_color = BLACK,
+           string title   = "ui"); // raylib configurations
     ~Canvas();
-    void update(); // raylib main event loop
+
+    bool window_is_active();
+    void draw(); // raylib main event loop
+
+    void add_component(Component *c);
 
 protected:
 };
-#endif
 
 
 

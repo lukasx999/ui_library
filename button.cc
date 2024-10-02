@@ -58,7 +58,7 @@ void Button::render(Rectangle rec) {
 }
 
 
-void Button::update() {
+void Button::update_impl() {
 
     float start_x = m_x - m_width/2;
     float start_y = m_y - m_height/2;
